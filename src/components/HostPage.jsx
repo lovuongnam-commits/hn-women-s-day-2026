@@ -333,32 +333,21 @@ export function HostPage() {
 								value={event.imageUrl}
 								onChange={handleEventChange("imageUrl")}
 							/>
+							<small>
+								Nếu nhập link ảnh hợp lệ, ảnh sẽ hiển thị ở đầu
+								thiệp (có thể là ảnh chủ nhân buổi tiệc, ảnh
+								minh hoạ, v.v.).
+							</small>
+						</div>
 
-                            <input
-                                type="file"
-                                accept="image/*"
-                                onChange={(e) => {
-                                    const file = e.target.files?.[0];
-                                    if (!file) return;
-
-                                    const reader = new FileReader();
-                                    reader.onload = () => {
-                                        setEvent((prev) => ({
-                                            ...prev,
-                                            imageUrl: reader.result,
-                                        }));
-                                    };
-                                    reader.readAsDataURL(file);
-                                }}
-                                style={{ marginTop: "6px" }}
-                            />
-
-                            <small>
-                                Nếu nhập link ảnh hợp lệ, ảnh sẽ hiển thị ở đầu
-                                thiệp (có thể là ảnh chủ nhân buổi tiệc, ảnh
-                                minh hoạ, v.v.).<br />Hoặc bạn có thể chọn tệp ảnh
-                                từ máy tính, nội dung sẽ được lưu dưới dạng
-                                base64.
+						<div className="field">
+							<label htmlFor="guestList">
+								Danh sách khách mời (mã - tên, tuỳ chọn)
+							</label>
+							<textarea
+								id="guestList"
+								placeholder={`Ví dụ:
+001 - Nguyễn Văn A
 002 - Trần Thị B
 VIP01 - Gia đình C`}
 								value={guestListText}
